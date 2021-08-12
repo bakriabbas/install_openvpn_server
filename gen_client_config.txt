@@ -1,0 +1,25 @@
+#!/bin/bash
+EASYRSA_PATH=/etc/openvpn/easy-rsa
+if [ "$1" != "" ]; then
+        client=$1
+else
+        read -p "Client name: " client
+fi
+cd $EASYRSA_PATH
+./easyrsa build-client-full $client nopass
+cp /etc/openvpn/client-template.txt ~/$client.ovpn
+{
+echo "<ca>"
+cat $EASYRSA_PATH/pki/ca.crt
+echo "</ca>"
+echo "<cert>"
+awk '/BEGIN/,/END/' $EASYRSA_PATH/pki/issued/$client.crt
+echo "</cert>"
+echo "<key>"
+cat $EASYRSA_PATH/pki/private/$client.key
+echo "</key>"
+echo "key-direction 1"
+echo "<tls-auth>"
+cat "/etc/openvpn/ta.key"
+echo "</tls-auth>"
+} >> ~/$client.ovpn
