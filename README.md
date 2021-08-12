@@ -7,6 +7,7 @@ git clone https://github.com/bakriabbas/install_openvpn_server.git
 
 <br><br><br>
 Navigate to the directory
+<br>
 cd install_openvpn_server
 
 <br><br><br>
