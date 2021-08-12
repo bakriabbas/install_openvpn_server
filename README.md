@@ -1,27 +1,31 @@
 # install_openvpn_server
 Install and Configure OpenVPN server
 
-- Clone the repo
+Clone the repo
+<br>
 git clone https://github.com/bakriabbas/install_openvpn_server.git
 
-<br>
-- Navigate to the directory
+<br><br><br>
+Navigate to the directory
 cd install_openvpn_server
 
+<br><br><br>
+Grant execute permissions
 <br>
-- Grant execute permissions
 chmod u+x install_ovpn_server.sh
 <br>
 chmod u+x gen_client_config.sh
 
+<br><br><br>
+Run the installation script
 <br>
-- Run the installation script
 ./install_ovpn_server
 <br>
 Note: script will generate a client named client1
 
+<br><br><br>
+If you want to add new client run
 <br>
-- If you want to add new client run
 ./gen_client_config.sh client_name
 <br>
 or
